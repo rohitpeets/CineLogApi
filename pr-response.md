@@ -15,11 +15,16 @@ Used editor's find-all references to find the function def and call sites ,then 
 **What I did:**
 Following the deduplication pattern from services/collection_service.py i updated the add_to_watchlist() function to contain a deduplication feature preventing duplicate entries.
 **How I verified:**
-
+add_to_watchlist() now checks for an existing WatchlistEntry with the same user_id/film_id before inserting, raising AlreadyInWatchlistError if found — mirroring add_to_collection()'s pattern. Verified via pytest tests/test_watchlist.py::test_add_to_watchlist_duplicate_raises, which passed, confirming the second add raises the error and only one row exists
 ## Comment 3 — Missing test
 **What I did:**
-**How I verified:**
+Followed the pattern existing in tests/test_collection.py , create a test_watchlist.py for watchlist service testing:
+test_add_to_watchlist_creates_entry()
+test_add_to_watchlist_duplicate_raises()
+test_add_to_watchlist_nonexistent_film_raises()
 
+**How I verified:**
+Ran pytest tests/test_watchlist.py -v — all three tests passed (create entry, duplicate raises, nonexistent film raises). Note: at the time of this test run, Film.id was still an integer (pre-rebase), so the nonexistent-film test passed because SQLite's weak typing didn't match the UUID-format fake ID against an integer column — not yet a true UUID-lookup test. This will be re-verified for the correct reason after rebasing onto main
 ## Comment 4 — Default visibility
 **My position:**
 **Reasoning:**
