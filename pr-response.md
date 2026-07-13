@@ -13,6 +13,7 @@ Used editor's find-all references to find the function def and call sites ,then 
 
 ## Comment 2 — Deduplication
 **What I did:**
+Following the deduplication pattern from services/collection_service.py i updated the add_to_watchlist() function to contain a deduplication feature preventing duplicate entries.
 **How I verified:**
 
 ## Comment 3 — Missing test
