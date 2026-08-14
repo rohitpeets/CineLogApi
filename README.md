@@ -2,7 +2,7 @@
 
 A community film tracking app. Users log films they've watched, rate them, and build collections.
 
-This repository is the starting point for **Project 6: Simulated Code Review**.
+A Flask/SQLAlchemy API for tracking watched films and building collections. I implemented the watchlist feature end-to-end (deduplication logic + tests) on this branch, then worked through a full code review cycle — addressing six maintainer review comments and, along the way, recovering from a silent rebase that had dropped commits, by managing an interactive rebase back to a clean, conventional-commit linear history.
 
 ---
 
@@ -76,17 +76,3 @@ Service functions follow a `verb_to_noun` pattern. See `CONTRIBUTING.md` for ful
 ```bash
 pytest tests/
 ```
-
----
-
-## Your Task
-
-You're working on the `feature/watchlist` branch, which adds a watchlist feature to CineLog. A maintainer (`@dev-lead`) has reviewed your PR and left six comments. Your job is to address all six.
-
-Read `CONTRIBUTING.md` before touching any code. Then check out the `feature/watchlist` branch:
-
-```bash
-git checkout feature/watchlist
-```
-
-The open PR and the maintainer's review comments are filed on GitHub. Work through each comment and document your responses in your **PR Response Doc**.
